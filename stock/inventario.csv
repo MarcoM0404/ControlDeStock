@@ -1,4 +1,6 @@
-codigo,producto,marca,precio,cantidad,codigo_barra
-1234,enanito,cuacua,17000,10,649583015899
-7894,agustincito,scuotricito,2000,40,138627874272
-4562,celular,iphone,28000,25,390742454267
+codigo,producto,marca,precio,cantidad,codigo_barra
+
+1234,iphone x,apple,650000,24,908552827943
+7894,iphone 11,apple,750000,45,602116107030
+4554,iphone 12,apple,850000,37,624675218735
+4512,iphone 13,apple,950000,18,826610851096
