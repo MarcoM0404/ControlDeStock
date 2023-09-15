@@ -3,12 +3,15 @@ import csv
 import random
 from barcode_generator import BarcodeGenerator
 
+from lector_barcode import buscar_producto, cargar_inventario, leer_codigo_desde_imagen
+
 def Menu():
     print("*****MENÚ DEL CONTROL DE STOCK*****")
     print("1. Ver todo el stock ---------------------- 2. Añadir producto")
     print("3. Modificar producto --------------------- 4. Eliminar producto")
     print("5. Buscar producto por código ------------- 6. Buscar producto por nombre")
-    print("7. Modificar cantidad del producto -------- 8. Salir")
+    print("7. Modificar cantidad del producto -------- 8. Leer código de barra con ruta de imagen")
+    print("9. Salir")
     opcion = str(input("Ingrese la opción que desea acceder: "))
     return opcion
     
@@ -208,6 +211,9 @@ def main():
         elif opcion == "7":
             ModificarCantidadProducto()
         elif opcion == "8":
+            ruta_imagen = str(input("Ingrese la ruta del código de barra: "))
+            leer_codigo_desde_imagen(ruta_imagen)
+        elif opcion == "9":
             break
     return
     
