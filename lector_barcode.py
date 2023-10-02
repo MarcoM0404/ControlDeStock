@@ -40,8 +40,6 @@ def cargar_inventario():
 
 
 
-import cv2
-from pyzbar.pyzbar import decode
 
 def leer_codigo_desde_imagen(ruta_imagen):
     # Carga la imagen desde la ruta especificada

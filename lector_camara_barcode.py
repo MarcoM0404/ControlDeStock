@@ -1,7 +1,7 @@
 import cv2
 from pyzbar.pyzbar import decode
 
-"""cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(10)
 cap.set(3, 640)
 cap.set(4, 480)
 
@@ -30,7 +30,12 @@ while True:
     success, img = cap.read()
 
     for barcode in decode(img):
-        mydata = barcode.data.decode("utf-8")
+        try:
+            mydata = barcode.data.decode("utf-8")
+        # Resto del código
+        except Exception as e:
+            print(f"Error al decodificar el código de barras: {e}")
+
         
         # Buscar el producto en el inventario por el código de barras
         producto_encontrado = None
@@ -56,4 +61,3 @@ while True:
 # Liberar la cámara y cerrar la ventana
 cap.release()
 cv2.destroyAllWindows()
-"""
