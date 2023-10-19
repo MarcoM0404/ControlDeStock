@@ -1,8 +1,9 @@
 import pandas as pd
+import os
 import csv
 import random
 from barcode_generator import BarcodeGenerator
-
+from lector_camara_barcode import buscar_producto, leer_codigo_desde_camara
 from lector_barcode import buscar_producto, cargar_inventario, leer_codigo_desde_imagen
 
 def Menu():
@@ -11,10 +12,15 @@ def Menu():
     print("3. Modificar producto --------------------- 4. Eliminar producto")
     print("5. Buscar producto por código ------------- 6. Buscar producto por nombre")
     print("7. Modificar cantidad del producto -------- 8. Leer código de barra con ruta de imagen")
-    print("9. Salir")
+    print("9. Leer código de barra con imagen -------- 10. Salir")
     opcion = str(input("Ingrese la opción que desea acceder: "))
     return opcion
     
+    
+
+def limpiar_consola():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def ExisteCodigo(codigo):
     with open("./stock/inventario.csv") as File:
         reader = csv.DictReader(File)
@@ -197,23 +203,34 @@ def main():
     while True:
         opcion = Menu()
         if opcion == "1":
+            limpiar_consola()
             VerStock()
         elif opcion == "2":
+            limpiar_consola()
             NuevoProducto()
         elif opcion == "3":
+            limpiar_consola()
             ModificarProducto()
         elif opcion == "4":
+            limpiar_consola()
             EliminarProducto()
         elif opcion == "5":
+            limpiar_consola()
             BuscarProductoPorCodigo()
         elif opcion == "6":
+            limpiar_consola()
             BuscarProductoPorNombre()
         elif opcion == "7":
+            limpiar_consola()
             ModificarCantidadProducto()
         elif opcion == "8":
+            limpiar_consola()
             ruta_imagen = str(input("Ingrese la ruta del código de barra: "))
             leer_codigo_desde_imagen(ruta_imagen)
         elif opcion == "9":
+            limpiar_consola()
+            leer_codigo_desde_camara()
+        elif opcion == "10":
             break
     return
     
