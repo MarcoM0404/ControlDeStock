@@ -19,4 +19,3 @@ def BarcodeGenerator(codigo_de_barras, nombre_cod):
 
 
 
-

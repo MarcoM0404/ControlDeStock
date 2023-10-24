@@ -30,6 +30,7 @@ def leer_codigo_desde_camara():
                 if producto:
                     print(f'Código de barras leído: {mydata}')
                     print(f'Producto: {producto["producto"]}')
+                    print(f'Código: {producto["codigo"]}')
                     print(f'Marca: {producto["marca"]}')
                     print(f'Precio: {producto["precio"]}')
                     print(f'Cantidad: {producto["cantidad"]}')

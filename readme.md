@@ -12,6 +12,7 @@ Asegúrate de tener instaladas las siguientes bibliotecas de Python antes de eje
 - `barcode_generator`
 - `pyzbar`
 - `pillow`
+- `tk`
 
 Puedes instalar estas bibliotecas utilizando el administrador de paquetes `pip`.
 
@@ -21,6 +22,7 @@ pip install barcode_generator
 pip install pillow
 pip install pyzbar
 pip install opencv-python
+pip install tk
 
 
 # Cómo utilizar
