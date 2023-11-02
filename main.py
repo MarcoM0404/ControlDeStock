@@ -1,42 +1,32 @@
 from lector_camara_barcode import leer_codigo_desde_camara
 from lector_barcode import leer_codigo_desde_imagen
-from agregar_producto import NuevoProducto
-from modificar_productos import ModificarProducto, ModificarCantidadProducto
-from eliminar_producto import EliminarProducto
-from buscar_productos import BuscarProductoPorCodigo, BuscarProductoPorNombre
-from menu import Menu, limpiar_consola, VerStock
+from agregar_producto import nuevo_producto
+from modificar_productos import modifica_productos, modificar_cantidad_producto
+from eliminar_producto import eliminar_producto
+from buscar_productos import buscar_producto_por_nombre, buscar_productos_por_codigo
+from menu import menu_opciones, limpiar_consola, ver_stock
 
                
 def main():
     while True:
-        opcion = Menu()
-        if opcion == "1":
-            limpiar_consola()
-            VerStock()
+        opcion = menu_opciones()
+        if opcion == "1":  
+            ver_stock()
         elif opcion == "2":
-            limpiar_consola()
-            NuevoProducto()
+            nuevo_producto()
         elif opcion == "3":
-            limpiar_consola()
-            ModificarProducto()
+            modifica_productos()
         elif opcion == "4":
-            limpiar_consola()
-            EliminarProducto()
+            eliminar_producto()
         elif opcion == "5":
-            limpiar_consola()
-            BuscarProductoPorCodigo()
+            buscar_productos_por_codigo()
         elif opcion == "6":
-            limpiar_consola()
-            BuscarProductoPorNombre()
+            buscar_producto_por_nombre()
         elif opcion == "7":
-            limpiar_consola()
-            ModificarCantidadProducto()
+            modificar_cantidad_producto()
         elif opcion == "8":
-            limpiar_consola()
-            ruta_imagen = input("Ingrese la ruta del código de barra: ")
-            leer_codigo_desde_imagen(ruta_imagen)
+            leer_codigo_desde_imagen()
         elif opcion == "9":
-            limpiar_consola()
             leer_codigo_desde_camara()
         elif opcion == "10":
             limpiar_consola()

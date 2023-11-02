@@ -1,7 +1,8 @@
 import cv2
 from pyzbar.pyzbar import decode
 import csv
-
+from menu import limpiar_consola
+from tabulate import tabulate
 def buscar_producto(codigo_barra):
     # Abre el archivo CSV y busca el producto por código
     with open("./stock/inventario.csv") as File:
@@ -12,6 +13,7 @@ def buscar_producto(codigo_barra):
     return None  # Devuelve None si el código no se encuentra
 
 def leer_codigo_desde_camara():
+    limpiar_consola()
     cap = cv2.VideoCapture(0)  # Abre la cámara (puede ajustar el número según su configuración)
     
     codigo_leido = False  # Variable de control
@@ -28,12 +30,12 @@ def leer_codigo_desde_camara():
                 producto = buscar_producto(codigo_producto)
                 
                 if producto:
-                    print(f'Código de barras leído: {mydata}')
-                    print(f'Producto: {producto["producto"]}')
-                    print(f'Código: {producto["codigo"]}')
-                    print(f'Marca: {producto["marca"]}')
-                    print(f'Precio: {producto["precio"]}')
-                    print(f'Cantidad: {producto["cantidad"]}')
+                    producto_info = [producto["codigo"], producto["producto"], producto["marca"], producto["precio"], producto["cantidad"], producto["codigo_barra"], producto["veces_modificado"]]
+    
+    # Imprimir la tabla con el producto encontrado
+                    headers = ["Código", "Producto", "Marca", "Precio", "Cantidad", "Código de Barras", "Veces Modificado"]
+                    tabla_producto = [producto_info]
+                    print(tabulate(tabla_producto, headers, tablefmt="fancy_grid"))
                     codigo_leido = True  # Marca que se ha leído un código válido
                 else:
                     print(f'Código de barras leído: {mydata} (Producto no encontrado en el inventario)')
@@ -49,6 +51,5 @@ def leer_codigo_desde_camara():
     # Libera la cámara y cierra la ventana
     cap.release()
     cv2.destroyAllWindows()
+    input("*** Presiona Enter para continuar ***")
 
-if __name__ == "__main__":
-    leer_codigo_desde_camara()

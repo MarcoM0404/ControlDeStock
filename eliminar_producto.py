@@ -1,6 +1,8 @@
 from existencias_codigos import ExisteCodigo
 import csv
-def EliminarProducto():
+from menu import limpiar_consola
+def eliminar_producto():
+    limpiar_consola()
     codigo = input("Ingrese el código del producto que desea eliminar: ")
     if ExisteCodigo(codigo) == "No existe":
         print("****El código que desea eliminar no existe****")
@@ -8,10 +10,10 @@ def EliminarProducto():
         eleccion = input("¿Está seguro? (Sí=S, No=N): ")
         eleccion = eleccion.upper()
         if eleccion == "S":
-            FuncionEliminar(codigo)
+            funcion_eliminar(codigo)
             print("Producto eliminado con éxito.")
 
-def FuncionEliminar(codigo):
+def funcion_eliminar(codigo):
     result = []
     with open("./stock/inventario.csv", newline="") as File:
         reader = csv.DictReader(File)
