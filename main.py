@@ -5,7 +5,7 @@ from modificar_productos import modifica_productos, modificar_cantidad_producto
 from eliminar_producto import eliminar_producto
 from buscar_productos import buscar_producto_por_nombre, buscar_productos_por_codigo
 from menu import menu_opciones, limpiar_consola, ver_stock
-
+from csv_ordenado import ordenar_stock, imprimir_stock_ordenado
                
 def main():
     while True:
@@ -29,6 +29,10 @@ def main():
         elif opcion == "9":
             leer_codigo_desde_camara()
         elif opcion == "10":
+            limpiar_consola()
+            ordenar_stock()
+            imprimir_stock_ordenado()
+        elif opcion == "11":
             limpiar_consola()
             break
     return

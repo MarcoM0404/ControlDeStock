@@ -52,4 +52,5 @@ def leer_codigo_desde_camara():
     cap.release()
     cv2.destroyAllWindows()
     input("*** Presiona Enter para continuar ***")
+    limpiar_consola()
 

@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import csv
 from tabulate import tabulate
 def menu_opciones():
@@ -13,9 +12,10 @@ def menu_opciones():
     print("║ 5. Buscar producto por código               ║")
     print("║ 6. Buscar producto por nombre               ║")
     print("║ 7. Modificar cantidad del producto          ║")
-    print("║ 8. Leer código de barra con imagen          ║")
-    print("║ 9. Leer código de barra con ruta de imagen  ║")
-    print("║ 10. Salir                                   ║")
+    print("║ 8. Leer código de barra con ruta de imagen  ║")
+    print("║ 9. Leer código de barra con imagen          ║")
+    print("║ 10. Ordenar stock por cantidades            ║")
+    print("║ 11. Salir                                   ║")
     print("╚═════════════════════════════════════════════╝")
 
     opcion = input("Ingrese la opción que desea acceder: ")

@@ -1,5 +1,5 @@
 import csv
-from existencias_codigos import ExisteCodigo
+from existencias_codigos import existe_codigo
 from menu import limpiar_consola
 
 def funcion_modificar(codigo, producto, marca, precio, cantidad):
@@ -24,6 +24,19 @@ def funcion_modificar(codigo, producto, marca, precio, cantidad):
         writer = csv.DictWriter(File, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(result)
+        
+def modifica_productos():
+    limpiar_consola()
+    codigo = input("Ingrese el código del producto que desea modificar: ")
+    if existe_codigo(codigo) == "No existe":
+        print("****El código que desea modificar no existe****")
+    else:
+        producto = input("Ingrese el nombre del producto: ")
+        marca = input("Ingrese la marca del producto: ")
+        precio = input("Ingrese el precio del producto: ")
+        cantidad = input("Ingrese la cantidad del producto: ")
+        veces_modificado = 0  # Inicializa en 0
+        funcion_modificar(codigo, producto, marca, precio, cantidad)
 
 
 def funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado):
@@ -32,6 +45,7 @@ def funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado):
         reader = csv.DictReader(File)
         for row in reader:
             if row["codigo"] == codigo:
+                veces_modificado = int(row["veces_modificado"]) + 1
                 row["cantidad"] = cantidad
                 row["veces_modificado"] = veces_modificado
             result.append(row)
@@ -42,54 +56,16 @@ def funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado):
         writer = csv.DictWriter(File, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(result)
-    actualizar_registro_modificacion(codigo)
 
-def actualizar_registro_modificacion(codigo):
-    with open("./stock/inventario.csv", mode='r') as file:
-        reader = csv.reader(file)
-        rows = list(reader)
-
-    for row in rows:
-        if row[0] == codigo:
-            # Encuentra el producto por su código
-            veces_modificado = int(row[6])
-            veces_modificado += 1
-            row[6] = str(veces_modificado)
-            break
-
-    with open("./stock/inventario.csv", mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(rows)
-
-def modifica_productos():
-    limpiar_consola()
-    codigo = input("Ingrese el código del producto que desea modificar: ")
-    if ExisteCodigo(codigo) == "No existe":
-        print("****El código que desea modificar no existe****")
-    else:
-        producto = input("Ingrese el nombre del producto: ")
-        marca = input("Ingrese la marca del producto: ")
-        precio = input("Ingrese el precio del producto: ")
-        cantidad = input("Ingrese la cantidad del producto: ")
-        veces_modificado = 0  # Inicializa en 0
-        funcion_modificar(codigo, producto, marca, precio, cantidad, veces_modificado)
 
 def modificar_cantidad_producto():
     limpiar_consola()
     codigo = input("Ingrese el código del producto que desea modificar: ")
-    if ExisteCodigo(codigo) == "No existe":
+    if existe_codigo(codigo) == "No existe":
         print("****El código que desea modificar no existe****")
     else:
         cantidad = input("Ingrese la cantidad del producto: ")
-        veces_modificado = obtener_veces_modificado(codigo)  # Obtener el valor de veces_modificado
+        veces_modificado = 0
+        
         funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado)
 
-def obtener_veces_modificado(codigo):
-    with open("./stock/inventario.csv", mode='r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            if row[0] == codigo:
-                # Encuentra el producto por su código
-                veces_modificado = int(row[6])
-                return veces_modificado
-    return 0  # Si no se encuentra, inicializa en 0

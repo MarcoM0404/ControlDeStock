@@ -7,7 +7,6 @@ Luego vamos a agregarle una interfaz grafica con la librería gráfica "TKinder"
 
 Asegúrate de tener instaladas las siguientes bibliotecas de Python antes de ejecutar el programa:
 
-- `pandas`
 - `cv2`
 - `barcode_generator`
 - `pyzbar`
@@ -16,8 +15,6 @@ Asegúrate de tener instaladas las siguientes bibliotecas de Python antes de eje
 
 Puedes instalar estas bibliotecas utilizando el administrador de paquetes `pip`.
 
-
-pip install pandas
 pip install barcode_generator
 pip install pillow
 pip install pyzbar

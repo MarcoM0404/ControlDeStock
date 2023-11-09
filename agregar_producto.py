@@ -1,5 +1,5 @@
-from existencias_codigos import ExisteCodigo, ExisteCodigoDeBarras
-from barcode_generator import generadorDeCodigo, BarcodeGenerator
+from existencias_codigos import existe_codigo,existe_codigo_de_barras 
+from barcode_generator import generador_de_codigo, barcode_generator
 from menu import limpiar_consola
 nombres_codigos_barras = []  # Lista para almacenar los nombres de códigos de barras
 
@@ -7,7 +7,7 @@ def nuevo_producto():
     limpiar_consola()
     global codigo_barra
     codigo = input("Ingrese el código de producto nuevo: ")
-    if ExisteCodigo(codigo) == "No existe":
+    if existe_codigo(codigo) == "No existe":
         producto = input("Ingrese el nombre del producto: ")
         marca = input("Ingrese la marca del producto: ")
         precio = input("Ingrese el precio del producto: ")
@@ -15,17 +15,17 @@ def nuevo_producto():
         veces_modificado = 0
         
         # Genera el código de barras único para el producto
-        codigo_barra = generadorDeCodigo()
+        codigo_barra = generador_de_codigo()
         
         nombre_cod = input("Ingrese el nombre del código: ")
-        while ExisteCodigoDeBarras(codigo_barra) is not None:
-            codigo_barra = generadorDeCodigo()
+        while existe_codigo_de_barras(codigo_barra) is not None:
+            codigo_barra = generador_de_codigo()
         
         # Agrega el nombre del código de barras a la lista
         nombres_codigos_barras.append(nombre_cod)
         
         # Llama a BarcodeGenerator con el código de barras único
-        BarcodeGenerator(codigo_barra, nombre_cod)
+        barcode_generator(codigo_barra, nombre_cod)
         
         # Luego, verifica si el archivo CSV ya existe
         archivo_existe = False

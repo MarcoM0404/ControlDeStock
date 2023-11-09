@@ -1,6 +1,5 @@
 barcode==1.0.3
 opencv-python==4.8.0.76
-pandas==2.1.0
 Pillow==10.0.0
 python-barcode==0.15.1
 pyzbar==0.1.9

@@ -1,11 +1,11 @@
-from existencias_codigos import ExisteCodigo
+from existencias_codigos import existe_codigo
 import csv
 from menu import limpiar_consola
 from tabulate import tabulate
 def buscar_productos_por_codigo():
     limpiar_consola()
     codigo = input("Ingrese el código del producto que desea buscar: ")
-    if ExisteCodigo(codigo) == "No existe":
+    if existe_codigo(codigo) == "No existe":
         print("****El código que desea buscar no existe****")
     else:
         funcion_buscar_codigo(codigo)
@@ -25,6 +25,7 @@ def funcion_buscar_codigo(codigo):
     tabla_productos = [[producto["codigo"], producto["producto"], producto["marca"], producto["precio"], producto["cantidad"], producto["codigo_barra"], producto["veces_modificado"]] for producto in productos]
     print(tabulate(tabla_productos, headers, tablefmt="fancy_grid"))
     input("*** Presiona Enter para continuar ***")
+    limpiar_consola()
 
 def buscar_producto_por_nombre():
     limpiar_consola()
@@ -49,5 +50,6 @@ def buscar_producto_por_nombre():
         print("****Ese producto no se encuentra en el stock****")
 
     input("*** Presiona Enter para continuar ***")
+    limpiar_consola()
 
 # Llamar a la función para buscar productos por nombre

@@ -4,24 +4,16 @@ from agregar_producto import nuevo_producto
 from modificar_productos import modifica_productos, modificar_cantidad_producto
 from eliminar_producto import eliminar_producto
 from buscar_productos import buscar_producto_por_nombre, buscar_productos_por_codigo
-from menu import menu_opciones, limpiar_consola, ver_stock
+from menu import ver_stock
 import tkinter as tk
 from ttkthemes import ThemedTk
+from customtkinter import *
 
-
-# En la función open_gui():
 def open_gui():
     root = ThemedTk(theme="equilux")
-  # Puedes elegir un tema diferente
-
-    root.geometry("300x300")
-    root.minsize(300, 300)
     root.title("Control de Stock")
-
-    # Para configurar el fondo en un tema personalizado, puedes hacerlo así:
-    root.config( background="blue")
-
-    # Etiquetas
+    set_default_color_theme("dark-blue")
+    root.config(width = 500, height = 150)
     label = tk.Label(root, text="**MENÚ DEL CONTROL DE STOCK**")
     label.pack()
 

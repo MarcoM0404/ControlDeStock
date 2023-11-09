@@ -1,6 +1,6 @@
 import csv
 
-def ExisteCodigo(codigo):
+def existe_codigo(codigo):
     with open("./stock/inventario.csv") as File:
         reader = csv.DictReader(File)
         for row in reader:
@@ -8,7 +8,7 @@ def ExisteCodigo(codigo):
                 return row
     return "No existe"
 
-def ExisteCodigoDeBarras(codigo_barra):
+def existe_codigo_de_barras(codigo_barra):
     with open("./stock/inventario.csv") as File:
         reader = csv.DictReader(File)
         for row in reader:
