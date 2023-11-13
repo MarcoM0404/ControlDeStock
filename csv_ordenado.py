@@ -7,13 +7,13 @@ def ordenar_stock():
 
     with open('./stock/inventario.csv', 'r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
-        fieldnames = csv_reader.fieldnames  # obtengo los nombres de las columnas del archivo original
+        hearders = csv_reader.fieldnames  # obtengo los nombres de las columnas del archivo original
 
-        sorted_rows = sorted(csv_reader, key=lambda row: int(row['cantidad']))
-
+        sorted_rows = sorted(csv_reader, key=lambda row: int(row['cantidad'])) #se utiliza una función lambda para definir una clave de ordenamiento. La función toma una fila (row) como entrada y devuelve el valor entero de la columna 'cantidad' de esa fila.
+        #se utiliza sorted que toma un iterable y devuelve la lista con los elementos ordenados de manera ascendente. a diferencia del sort, el sorted crea una lista nueva.
     # abre un nuevo archivo CSV en modo escritura
     with open('./stock/inventario_ordenado.csv', 'w', newline='') as new_csv_file:
-        csv_writer = csv.DictWriter(new_csv_file, fieldnames=fieldnames)
+        csv_writer = csv.DictWriter(new_csv_file, hearders)
 
         # escribe los encabezados
         csv_writer.writeheader()
@@ -32,7 +32,7 @@ def imprimir_stock_ordenado():
             input("Presiona Enter para continuar")
             return
 
-        print(tabulate(data, headers=headers, tablefmt='fancy_grid'))
+        print(tabulate(data, headers, tablefmt='fancy_grid'))
 
         input("*** Se ha generado el stock ordenado, presiona Enter para continuar ***")
         limpiar_consola()

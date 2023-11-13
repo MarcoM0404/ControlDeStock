@@ -1,7 +1,7 @@
 # Sistema de Control de Stock
 
 Este programa es un sistema de control de stock que te permite gestionar la información de productos, incluyendo su nombre, marca, precio, cantidad y códigos de barras únicos.
-Luego vamos a agregarle una interfaz grafica con la librería gráfica "TKinder" así es más agradable el manejo del sistema.
+Además agregamos una interfaz gráfica con la librería gráfica "TKinder" así es más agradable el manejo del sistema.
 
 ## Requisitos
 
@@ -34,6 +34,8 @@ Buscar producto por código
 Buscar producto por nombre
 Modificar cantidad del producto
 Leer código de barra con ruta de imagen
+Leer código de barra con Imagen
+Ordenar stock por cantidad
 Salir
 Selecciona una opción ingresando el número correspondiente.
 
@@ -60,6 +62,9 @@ Permite modificar la cantidad de un producto existente en el stock.
 
 ### Leer código de barra
 Lee un código de barras a partir de una imagen o por su ruta de y muestra su información.
+
+### Ordenar stock por cantidad
+Se genera otro archivo csv y se imprime mostrando el stock ordenado de manera ascendente por sus cantidades
 
 ### Salir
 Finaliza el programa.

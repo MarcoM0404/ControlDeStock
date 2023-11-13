@@ -4,13 +4,6 @@ from menu import limpiar_consola
 from tabulate import tabulate
 import csv
 
-def buscar_producto(codigo_barras, inventario):
-    # Busca el producto en el inventario
-    for producto in inventario:
-        if codigo_barras.startswith(producto['codigo_barra'][:12]):
-            return producto
-    return None
-
 def cargar_inventario():
     inventario = []
     with open("./stock/inventario.csv", 'r') as archivo:
@@ -18,15 +11,23 @@ def cargar_inventario():
         for row in reader:
             inventario.append(row)
     return inventario
+def buscar_producto(codigo_barras, inventario):
+    # Busca el producto en el inventario
+    for producto in inventario:
+        if codigo_barras.startswith(producto['codigo_barra'][:12]):
+            return producto
+    return None
+
+
 
 def leer_codigo_desde_imagen():
     limpiar_consola()
     
     while True:
-        ruta_imagen = input("Ingrese la ruta del código de barras: ")
+        ruta_imagen = input("Ingrese el código del producto: ")
         
         try:
-            imagen = cv2.imread(ruta_imagen)
+            imagen = cv2.imread(f"./fotos_codigos/{ruta_imagen}.png")
             if imagen is None:
                 raise Exception("No se pudo abrir la imagen. Ingrese una dirección que sea válida.")
             

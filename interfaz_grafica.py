@@ -7,12 +7,11 @@ from buscar_productos import buscar_producto_por_nombre, buscar_productos_por_co
 from menu import ver_stock
 import tkinter as tk
 from ttkthemes import ThemedTk
-from customtkinter import *
 
 def open_gui():
     root = ThemedTk(theme="equilux")
     root.title("Control de Stock")
-    set_default_color_theme("dark-blue")
+    root.config(bg="lightblue")
     root.config(width = 500, height = 150)
     label = tk.Label(root, text="**MENÚ DEL CONTROL DE STOCK**")
     label.pack()
@@ -39,7 +38,7 @@ def open_gui():
     btn_modificar_cantidad = tk.Button(root, text="Modificar cantidad del producto", command=modificar_cantidad_producto)
     btn_modificar_cantidad.pack()
     
-    btn_leer_codigo_barra_ruta = tk.Button(root, text="Leer código de barra con ruta de imagen", command=leer_codigo_desde_imagen)
+    btn_leer_codigo_barra_ruta = tk.Button(root, text="Leer código de barra con código", command=leer_codigo_desde_imagen)
     btn_leer_codigo_barra_ruta.pack()
     
     btn_leer_codigo_barra_camara = tk.Button(root, text="Leer código de barra con imagen", command=leer_codigo_desde_camara)
