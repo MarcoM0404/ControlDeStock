@@ -35,15 +35,15 @@ def ver_stock():
     
     with open("./stock/inventario.csv", "r", newline="") as csvfile:
         reader = csv.reader(csvfile)
-        headers = next(reader)  # con esta variable la primer fila pasa a ser el encabezado
-        data = [row for row in reader] #las demas filas pasan a formar parte de los datos del encabezado
+        headers = next(reader) #toma la primer fila y la hace parte del encabezado
+        data = [row for row in reader] #las demas filas pasan a formar parte de los datos del encabezado, se convierte en una lista de listas, donde cada lista interna representa una fila del archivo CSV.
 
     if not data:
         print("El archivo de inventario está vacío.")
         input("Presiona Enter para continuar")
         return
 
-    print(tabulate(data, headers=headers, tablefmt='fancy_grid'))# uso "tabulate" para que lo haga en forma de tabla y el tablefmt es el formato, el "pretty" esta bueno tambien
+    print(tabulate(data, headers, tablefmt='fancy_grid'))# uso "tabulate" para que lo haga en forma de tabla y el tablefmt es el formato, el "pretty" esta bueno tambien
 
     input("*** Presiona Enter para continuar ***")
     limpiar_consola()

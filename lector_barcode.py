@@ -57,4 +57,5 @@ def leer_codigo_desde_imagen():
         print('Productos no encontrados en la imagen')
 
     input("*** Presiona Enter para continuar ***")
+    limpiar_consola()
 

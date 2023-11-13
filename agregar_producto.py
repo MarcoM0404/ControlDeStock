@@ -17,7 +17,7 @@ def nuevo_producto():
         # Genera el código de barras único para el producto
         codigo_barra = generador_de_codigo()
         
-        nombre_cod = input("Ingrese el nombre del código: ")
+        nombre_cod = codigo
         while existe_codigo_de_barras(codigo_barra) is not None:
             codigo_barra = generador_de_codigo()
         

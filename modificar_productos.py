@@ -20,8 +20,8 @@ def funcion_modificar(codigo, producto, marca, precio, cantidad):
 
     # escribe los cambios en el archivo CSV sin caracteres de nueva línea
     with open("./stock/inventario.csv", "w", newline="") as File:
-        fieldnames = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
-        writer = csv.DictWriter(File, fieldnames=fieldnames, extrasaction="ignore")
+        headers = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
+        writer = csv.DictWriter(File, headers, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(result)
         
@@ -35,11 +35,10 @@ def modifica_productos():
         marca = input("Ingrese la marca del producto: ")
         precio = input("Ingrese el precio del producto: ")
         cantidad = input("Ingrese la cantidad del producto: ")
-        veces_modificado = 0  # Inicializa en 0
         funcion_modificar(codigo, producto, marca, precio, cantidad)
 
 
-def funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado):
+def funcion_modificar_cantidad_producto(codigo, cantidad):
     result = []
     with open('./stock/inventario.csv', newline="") as File:
         reader = csv.DictReader(File)
@@ -52,8 +51,8 @@ def funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado):
     
     # Escribe los cambios en el archivo CSV sin caracteres de nueva línea
     with open("./stock/inventario.csv", "w", newline="") as File:
-        fieldnames = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
-        writer = csv.DictWriter(File, fieldnames=fieldnames, extrasaction="ignore")
+        headers = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
+        writer = csv.DictWriter(File, headers, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(result)
 
@@ -65,7 +64,4 @@ def modificar_cantidad_producto():
         print("****El código que desea modificar no existe****")
     else:
         cantidad = input("Ingrese la cantidad del producto: ")
-        veces_modificado = 0
-        
-        funcion_modificar_cantidad_producto(codigo, cantidad, veces_modificado)
-
+        funcion_modificar_cantidad_producto(codigo, cantidad)

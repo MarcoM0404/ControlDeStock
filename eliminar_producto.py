@@ -9,7 +9,7 @@ def eliminar_producto():
     if existe_codigo(codigo) == "No existe":
         print("****El código que desea eliminar no existe****")
     else:
-        foto_filename = input("Ingrese el nombre de la imagen del producto: ")
+        foto_filename = f"{codigo}.png"
         eleccion = input("¿Desea eliminar el producto? [S/n]: ").lower()
         if eleccion == "s" or eleccion == "":
             funcion_eliminar(codigo, foto_filename)
