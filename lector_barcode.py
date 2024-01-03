@@ -12,7 +12,7 @@ def cargar_inventario():
             inventario.append(row)
     return inventario
 def buscar_producto(codigo_barras, inventario):
-    # Busca el producto en el inventario
+    o
     for producto in inventario:
         if codigo_barras.startswith(producto['codigo_barra'][:12]):
             return producto
@@ -32,7 +32,7 @@ def leer_codigo_desde_imagen():
                 raise Exception("No se pudo abrir la imagen. Ingrese una dirección que sea válida.")
             
             codigos = decode(imagen)
-            break  # Salir del bucle si la lectura de la imagen fue exitosa
+            break  
         except Exception as e:
             print(f'Error: {e}')
     

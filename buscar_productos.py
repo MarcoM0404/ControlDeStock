@@ -20,7 +20,7 @@ def funcion_buscar_codigo(codigo):
         input("*** Presiona Enter para continuar ***")
         return
 
-    # Mostrar los resultados en una tabla utilizando tabulate
+    
     headers = ["Código", "Producto", "Marca", "Precio", "Cantidad", "Código de Barras", "Veces Modificado"]
     tabla_productos = [[producto["codigo"], producto["producto"], producto["marca"], producto["precio"], producto["cantidad"], producto["codigo_barra"], producto["veces_modificado"]] for producto in productos]
     print(tabulate(tabla_productos, headers, tablefmt="fancy_grid"))
@@ -30,20 +30,20 @@ def funcion_buscar_codigo(codigo):
 def buscar_producto_por_nombre():
     limpiar_consola()
     palabra = input("Ingrese el nombre del producto que desea buscar: ")
-
-    # Leer el archivo CSV e inicializar una lista para almacenar los resultados
+    palabra = palabra.lower()
+    
     resultados = []
 
     with open("./stock/inventario.csv", mode="r") as file:
         reader = csv.reader(file)
-        header = next(reader)  # Leer la primera fila del archivo (encabezados)
+        header = next(reader)  
         for row in reader:
             codigo, producto, marca, precio, cantidad, codigo_barra, veces_modificado = row
-            if palabra in producto:
+            if palabra in producto.lower():
                 resultados.append([codigo, producto, marca, precio, cantidad, codigo_barra, veces_modificado])
 
     if resultados:
-        # Mostrar los resultados en una tabla
+        
         table_headers = ["Código", "Producto", "Marca", "Precio", "Cantidad", "Código de Barras", "Veces Modificado"]
         print(tabulate(resultados, headers=table_headers, tablefmt="fancy_grid"))
     else:
@@ -52,4 +52,3 @@ def buscar_producto_por_nombre():
     input("*** Presiona Enter para continuar ***")
     limpiar_consola()
 
-# Llamar a la función para buscar productos por nombre

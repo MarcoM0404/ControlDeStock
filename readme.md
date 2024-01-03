@@ -7,11 +7,12 @@ Además agregamos una interfaz gráfica con la librería gráfica "TKinder" así
 
 Asegúrate de tener instaladas las siguientes bibliotecas de Python antes de ejecutar el programa:
 
-- `cv2`
+- `open cv`
 - `barcode_generator`
 - `pyzbar`
 - `pillow`
 - `tk`
+- `tabulate`
 
 Puedes instalar estas bibliotecas utilizando el administrador de paquetes `pip`.
 
@@ -20,6 +21,8 @@ pip install pillow
 pip install pyzbar
 pip install opencv-python
 pip install tk
+pip install tabulate
+
 
 
 # Cómo utilizar

@@ -7,7 +7,7 @@ def ordenar_stock():
 
     with open('./stock/inventario.csv', 'r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
-        hearders = csv_reader.fieldnames  # obtengo los nombres de las columnas del archivo original
+        hearders = csv_reader.fieldnames  
 
         sorted_rows = sorted(csv_reader, key=lambda row: int(row['cantidad'])) #se utiliza una función lambda para definir una clave de ordenamiento. La función toma una fila (row) como entrada y devuelve el valor entero de la columna 'cantidad' de esa fila.
         #se utiliza sorted que toma un iterable y devuelve la lista con los elementos ordenados de manera ascendente. a diferencia del sort, el sorted crea una lista nueva.

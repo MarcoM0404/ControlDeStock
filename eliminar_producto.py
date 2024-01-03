@@ -24,16 +24,16 @@ def funcion_eliminar(codigo, foto_filename):
         reader = csv.DictReader(File)
         for row in reader:
             if row["codigo"] != codigo:
-                result.append(row) #Se evalúa si el código de la fila actual coincide con el código que se desea eliminar (codigo). Si no coinciden, la fila se agrega a la lista result, lo que significa que la fila no se eliminará.
+                result.append(row) 
             else:  
                 if foto_filename:
-                    # Elimina la foto si existe
+                    
                     foto_path = os.path.join("fotos_codigos", foto_filename)
                     if os.path.exists(foto_path):
                         os.remove(foto_path)
 
     with open("./stock/inventario.csv", "w", newline="") as File:
         fieldnames = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
-        writer = csv.DictWriter(File, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(File, fieldnames, extrasaction="ignore")
         writer.writeheader()
-        writer.writerows(result) # Luego, se escribe la fila de encabezado y se escriben las filas restantes (las que no se eliminaron) en el nuevo archivo CSV.
+        writer.writerows(result) 

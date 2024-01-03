@@ -7,11 +7,14 @@ def nuevo_producto():
     limpiar_consola()
     global codigo_barra
     codigo = input("Ingrese el código de producto nuevo: ")
+    codigo = codigo.strip()
     if existe_codigo(codigo) == "No existe":
         producto = input("Ingrese el nombre del producto: ")
         marca = input("Ingrese la marca del producto: ")
         precio = input("Ingrese el precio del producto: ")
         cantidad = input("Ingrese la cantidad del producto: ")
+        if cantidad == "":
+            cantidad = 0
         veces_modificado = 0
         
         # Genera el código de barras único para el producto

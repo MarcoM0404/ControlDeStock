@@ -3,13 +3,13 @@ from existencias_codigos import existe_codigo
 from menu import limpiar_consola
 
 def funcion_modificar(codigo, producto, marca, precio, cantidad):
-    # Encuentra el producto existente en el archivo CSV
+    
     result = []
     with open('./stock/inventario.csv', newline="") as File:
         reader = csv.DictReader(File)
         for row in reader:
             if row["codigo"] == codigo:
-                # agarramos el valor actual de veces_modificado y aumenta 1
+                
                 veces_modificado = int(row["veces_modificado"]) + 1
                 row["producto"] = producto
                 row["marca"] = marca
@@ -18,7 +18,7 @@ def funcion_modificar(codigo, producto, marca, precio, cantidad):
                 row["veces_modificado"] = veces_modificado
             result.append(row)
 
-    # escribe los cambios en el archivo CSV sin caracteres de nueva línea
+    
     with open("./stock/inventario.csv", "w", newline="") as File:
         headers = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
         writer = csv.DictWriter(File, headers, extrasaction="ignore")
@@ -49,7 +49,7 @@ def funcion_modificar_cantidad_producto(codigo, cantidad):
                 row["veces_modificado"] = veces_modificado
             result.append(row)
     
-    # Escribe los cambios en el archivo CSV sin caracteres de nueva línea
+    
     with open("./stock/inventario.csv", "w", newline="") as File:
         headers = ["codigo", "producto", "marca", "precio", "cantidad", "codigo_barra", "veces_modificado"]
         writer = csv.DictWriter(File, headers, extrasaction="ignore")
